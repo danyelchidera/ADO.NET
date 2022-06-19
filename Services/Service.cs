@@ -1,5 +1,6 @@
 ﻿using ADO.NET.Models;
 using ADO.NET.Repositories;
+using ADO.NET.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +20,11 @@ namespace ADO.NET.Services
         public void AddEmployee(string FirstName, string LastName)
         {
             _repo.InsertEmployee(FirstName, LastName);
+        }
+
+        public EmployeeAndAddress GetAllEmployeeAndAdress()
+        {
+            return _repo.GetAllEmployeeAndAdress();
         }
 
         public List<Employee> GetEmployee()

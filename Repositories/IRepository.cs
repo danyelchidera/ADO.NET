@@ -1,4 +1,5 @@
 ﻿using ADO.NET.Models;
+using ADO.NET.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,5 +12,6 @@ namespace ADO.NET.Repositories
         public void InsertEmployee(string FirstName, string LastName);
         public List<Employee> GetAllEmployees();
         public void UpdateEmployee(int Id, string FirstName, string LastName);
+        public EmployeeAndAddress GetAllEmployeeAndAdress();
     }
 }

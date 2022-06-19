@@ -1,5 +1,6 @@
 ﻿using ADO.NET.Repositories;
 using ADO.NET.Services;
+using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
@@ -17,7 +18,11 @@ namespace ADO.NET
         }
         public void Run()
         {
-            _service.AddEmployee("Naruto", "Sasuke");
+
+            _service.GetEmployee().ForEach(e =>
+            {
+                Console.WriteLine(e.ToString());
+            });
             
         }
     }
