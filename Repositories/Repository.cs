@@ -52,16 +52,25 @@ namespace ADO.NET.Repositories
         {
             using(SqlConnection con = new SqlConnection(_conString))
             {
-                var command = "INSERT INTO EmployeeProfile(FirstName, LastName) VALUES (@FirstName, @LastName)";
-                SqlCommand cmd = new SqlCommand(command, con);
+                SqlCommand cmd = new SqlCommand("spAddEmployee", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@FirstName", FirstName);
                 cmd.Parameters.AddWithValue("@LastName", LastName);
+                SqlParameter outputParameter = new SqlParameter();
+                outputParameter.ParameterName = "@ID";
+                outputParameter.SqlDbType = System.Data.SqlDbType.Int;
+                outputParameter.Direction = System.Data.ParameterDirection.Output;
+
+                cmd.Parameters.Add(outputParameter);
+                
                 con.Open();
                 cmd.ExecuteNonQuery();
+
+                Console.WriteLine(outputParameter.Value.ToString()); 
             }
       
         }
-
+        
         public void UpdateEmployee(int Id, string FirstName, string LastName)
         {
             using (SqlConnection con = new SqlConnection(_conString))

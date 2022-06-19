@@ -17,6 +17,8 @@ namespace ADO.NET
         }
         public void Run()
         {
+            _service.AddEmployee("Naruto", "Sasuke");
+            
         }
     }
 }
