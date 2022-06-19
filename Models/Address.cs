@@ -1,4 +1,4 @@
-﻿namespace WebApplication2.Models
+﻿namespace ADO.NET.Models
 {
     public class Address
     {

@@ -1,20 +1,22 @@
 ﻿using ADO.NET.Repositories;
+using ADO.NET.Services;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace ADO.NET
 {
-    public class Worker
+    public class Start
     {
         private readonly IConfiguration _config;
+        private readonly IService _service;
 
-        public Worker(IConfiguration config)
+        public Start(IConfiguration config, IService service)
         {
             _config = config;
+            _service = service;
         }
         public void Run()
         {
-            Repository.InsertEmployee(_config.GetConnectionString("DefaultConnection"));
-            System.Console.WriteLine(_config.GetConnectionString("DefaultConnection"));
         }
     }
 }
